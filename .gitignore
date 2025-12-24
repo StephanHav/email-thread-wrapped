@@ -1,4 +1,4 @@
-data/*.mbox
+data/
 .venv/
 .ipynb_checkpoints/
 __pycache__/
