@@ -36,8 +36,9 @@ def load_mbox(path):
     df["date"] = pd.to_datetime(df["date"], errors="coerce", utc=True)
 
     # derived fields
-    df["hour"] = df["date"].dt.hour
-    df["weekday"] = df["date"].dt.day_name()
+    df["date_local"] = df["date"].dt.tz_convert("Europe/Amsterdam")
+    df["hour"] = df["date_local"].dt.hour
+    df["weekday"] = df["date_local"].dt.day_name()
     df["length"] = df["body"].str.len()
     df["opening"] = df["body"].str.split("\n").str[0].str.strip()
 
